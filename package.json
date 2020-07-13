@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-material": "latest",
+    "vue-router": "3.0.1",
+    "vue2-storage": "latest",
+    "vue-global-var": "latest"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

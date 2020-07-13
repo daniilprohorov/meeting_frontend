@@ -1,19 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="config">
+      <DayOfWeekTabs></DayOfWeekTabs>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DayOfWeekTabs from "@/components/DayOfWeekTabs";
 
 export default {
-  name: 'App',
+  name: 'Config',
   components: {
-    HelloWorld
+    DayOfWeekTabs,
+  },
+  data: () => {
+      return {
+          globalConfig: Object
+      }
   }
 }
+
 </script>
 
 <style>
@@ -26,3 +31,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+
