@@ -1,5 +1,5 @@
 <template>
-    <div style = "margin : 5%">
+    <div style = "margin : 0%">
         <md-card >
             <md-ripple style = "padding : 5%">
                 <md-card-header>
@@ -47,7 +47,9 @@
             </md-ripple>
         </md-card>
 
-        <div style = "margin-bottom : 0%; margin-top: 0%; margin-left: 5%; margin-right: 5%">
+        <md-button class="md-dense md-raised md-primary" style="margin:1%" @click="openCurrent"> {{ this.buttonName }} </md-button>
+
+        <div v-if="openCurrentFlg">
             <div v-for="(t, index) in this.day" :key="t.id" >
                 <md-card >
                     <md-ripple style = "margin : 1%">
@@ -81,8 +83,8 @@
             dayOfWeek : String
         },
         data: () => ({
-            day: [['asdfaf', 'asdfasdf']],
-            config : null,
+            day: [],
+            config : [],
             h1 : null,
             m1 : null,
             h2 : null,
@@ -95,15 +97,27 @@
             m1_check : false,
             h2_check : false,
             m2_check : false,
-            lol: null,
+            openCurrentFlg : false,
+            buttonName : "Open current",
             timePeriods : [String]
         }),
-        created() {
-            let config = JSON.parse(localStorage.getItem('config'))
-            this.day = config[this.dayOfWeek]
-            this.config = config
-        },
         methods : {
+            openCurrent() {
+                this.infoUpdate()
+                this.openCurrentFlg = !this.openCurrentFlg
+                if (this.openCurrentFlg === true ) {
+                    this.buttonName = "Close"
+                }
+                else {
+                    this.buttonName = "Open current"
+                }
+            },
+            infoUpdate() {
+                let config = JSON.parse(localStorage.getItem('config'))
+                this.day = config[this.dayOfWeek]
+                this.config = config
+                this.$forceUpdate();
+            },
             sendTimePeriods() {
                 if (this.h1_check && this.h2_check && this.m1_check && this.m2_check
                 && this.h1_res !== null && this.h2_res !== null && this.m1_res !== null && this.m2_res != null) {
@@ -149,7 +163,6 @@
             },
             hm1() {
                 let config = this.config
-                console.log(config)
                 let day = config[this.dayOfWeek]
                 return day[this.n][0]
             },
@@ -166,6 +179,12 @@
                 this.config = config
 
             }
+        },
+        mounted() {
+            this.$root.$on('updateTabs', () => { // here you need to use the arrow function
+                this.openCurrentFlg = false
+                this.buttonName = "Open current"
+            })
         },
         computed: {
             h1Class () {

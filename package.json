@@ -13,7 +13,12 @@
     "vue-material": "latest",
     "vue-router": "3.0.1",
     "vue2-storage": "latest",
-    "vue-global-var": "latest"
+    "axios": "latest",
+    "vue-axios": "latest",
+    "vue-global-var": "latest",
+    "mocha": "latest",
+    "selenium-webdriver": "latest",
+    "chromedriver": "latest"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

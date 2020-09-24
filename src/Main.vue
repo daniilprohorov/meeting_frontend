@@ -1,7 +1,7 @@
 <template>
-  <div id="main">
+  <div id="main" style="max-width: 1400px; margin-left: auto; margin-right: auto">
       <div>
-          <md-tabs router-link md-alignment="centered">
+          <md-tabs md-dynamic-height router-link md-alignment="centered">
               <md-tab md-label="Result" to="/result"><Result/></md-tab>
               <md-tab md-label="Config" to="/config"><Config/></md-tab>
           </md-tabs>

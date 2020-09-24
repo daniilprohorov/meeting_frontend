@@ -6,8 +6,11 @@ import VueMaterial from 'vue-material'
 import VueGlobalVar from 'vue-global-var'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
-import router from "./routes";
+import router from "./routes"
+import axios from 'axios'
+import VueAxios from 'vue-axios';
 
+Vue.use(VueAxios, axios)
 Vue.use(VueMaterial)
 Vue.use(VueGlobalVar, {
   globals: {
@@ -15,7 +18,6 @@ Vue.use(VueGlobalVar, {
   },
 })
 Vue.config.productionTip = false
-
 // new Vue({
 //   render: h => h(App),
 // }).$mount('#app')

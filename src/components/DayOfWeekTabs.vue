@@ -1,6 +1,6 @@
 <template>
     <div>
-        <md-tabs router-link>
+        <md-tabs md-dynamic-height @md-changed="updateTabs" router-link>
             <md-tab id="tab-city-days" md-label="City and days" to="/cityDays" exact>
                 <CityDays></CityDays>
             </md-tab>
@@ -40,6 +40,11 @@
             CityDays,
            InputTimePeriod
         },
+        methods : {
+           updateTabs() {
+               this.$root.$emit('updateTabs');
+           }
+        }
 
     }
 </script>
